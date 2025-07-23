@@ -1,23 +1,20 @@
 import { IconsNames, useIcon } from "@/hooks/useIcon";
-import Image from "next/image";
 import { ImgHTMLAttributes } from "react";
 
-interface IconProps extends ImgHTMLAttributes<HTMLImageElement> {
+interface IconProps extends ImgHTMLAttributes<SVGAElement> {
 	name: IconsNames;
-	width?: number;
-	height?: number;
+	size?: number
 }
 
-export const Icon = ({ name, width, height, ...rest }: IconProps) => {
+export const Icon = ({ name, size = 24, ...rest }: IconProps) => {
 	const { getIconByKeyword } = useIcon();
-	const iconSrc = getIconByKeyword(name);
+	const LucideIcon = getIconByKeyword(name) as React.ComponentType<ImgHTMLAttributes<SVGElement>>;
 
-	if (!iconSrc) {
+	if (!LucideIcon) {
 		console.error(`Icon '${name}' not found.`);
 		return null;
 	}
 
-	return (
-		<Image src={iconSrc} alt={name} width={width} height={height} {...rest} />
-	);
+	return <LucideIcon width={size} height={size} {...rest} />
+	
 };
