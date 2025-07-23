@@ -1,12 +1,10 @@
-import profileSrc from "@/assets/icons/menu-usuario.svg";
-import menuSrc from "@/assets/icons/icon-menu.svg";
-import closeSrc from "@/assets/icons/close.svg";
+import { EyeClosed } from "lucide";
+
+
 export type IconsNames = keyof typeof icons;
 
 const icons = {
-	profile: profileSrc,
-	menu: menuSrc,
-	close: closeSrc,
+	eyeClosed: EyeClosed,
 };
 
 export const useIcon = () => {
